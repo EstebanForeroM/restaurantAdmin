@@ -4,6 +4,7 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-reac
 import  Product  from './components/Product/Product.tsx';
 import Client from './components/Client/Client.tsx';
 import  Order  from './components/Order/Order.tsx';
+import useDarkMode from 'use-dark-mode';
 
 export enum ActiveWindow {
   Clients,
@@ -12,11 +13,11 @@ export enum ActiveWindow {
 }
 
 function App() {
-
+  const darkMode = useDarkMode(false);
   const [activeWindow,setActiveWindow] = useState(ActiveWindow.Clients);
 
   return (
-    <>
+    <main className={`${darkMode.value ? 'dark' : ''} text-foreground bg-background`}>
       <SignedIn>
         <NavBar  SetActiveWindow={setActiveWindow} ActiveWindows={activeWindow}/>
         {
@@ -32,7 +33,7 @@ function App() {
       <SignedOut>
         <SignInButton />
       </SignedOut>
-    </>
+    </main>
   )
 }
 

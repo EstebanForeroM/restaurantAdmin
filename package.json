@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.0.1",
+    "@nextui-org/accordion": "^2.0.32",
+    "@nextui-org/avatar": "^2.0.27",
     "@nextui-org/button": "^2.0.31",
     "@nextui-org/card": "^2.0.28",
     "@nextui-org/image": "^2.0.27",
@@ -19,12 +21,14 @@
     "@nextui-org/navbar": "^2.0.30",
     "@nextui-org/select": "^2.1.27",
     "@nextui-org/system": "^2.1.2",
+    "@nextui-org/table": "^2.0.33",
     "@nextui-org/tabs": "^2.0.29",
     "@nextui-org/theme": "^2.2.3",
     "framer-motion": "^11.1.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-query": "^3.39.3"
+    "react-query": "^3.39.3",
+    "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

@@ -1,8 +1,11 @@
+import ClientTable from "./ClientTable"
+import SearchClient from "./SearchClient"
 
 export default function Client() {
     return (
-        <div>
-            <h1>Client</h1>
-        </div>
+        <>
+            <SearchClient/>
+            <ClientTable/>
+        </>
     )
 }

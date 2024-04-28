@@ -28,7 +28,7 @@ export function NavBar( NavBarProps: NavBarProps) {
         />
         <NavbarBrand>
           <img src="https://utfs.io/f/a47bcfcf-7caa-4cfa-b744-314e69a9e702-ojmlqz.png" alt="ACME" className="w-8 h-8" />
-          <p className="font-bold text-inherit">ACME</p>
+          <p className="font-bold text-inherit">FastFood</p>
         </NavbarBrand>
       </NavbarContent>
 
