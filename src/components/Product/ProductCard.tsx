@@ -4,6 +4,9 @@ import { Image } from "@nextui-org/image";
 import { Tabs, Tab } from "@nextui-org/tabs";
 import { Input, Textarea } from "@nextui-org/input";
 import {Select, SelectSection, SelectItem} from "@nextui-org/select";
+import { getProduct } from "../../api/productAPI";
+import { useQuery } from "react-query";
+
 
 type Categories = "Appetizers" | "Main Courses" | "Side Dishes" | "Desserts" | "Beverages";
 
@@ -12,21 +15,30 @@ const options: string[] = [
 ]
 
 interface ProductCardProps {
-    imgURL: string;
-    title: string;
-    description: string;
-    price: number;
-    category: Categories;
+    productId: string;
 }
 
-export default function ProductCard(props: ProductCardProps){
+export default function ProductCard(props: ProductCardProps) { 
 
+    const {data:productData , isLoading} = useQuery({
+        queryFn: () => getProduct(props.productId),
+        queryKey: [props.productId],
+    });
+
+    if(isLoading){
+        return <div>Loading...</div>;
+    }
+
+    if (!productData) {
+        return <div>Product not found</div>;
+    }
+    
     return (
         <Card className="py-4 w-fit m-2.5">
           <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
           <Tabs  fullWidth={false} className=" overflow-x-hidden gap-3 " variant="underlined">
             <Tab title="Image" >
-            <Input variant={"flat"} label="Image" placeholder="Image URL" defaultValue={props.imgURL} labelPlacement="outside"/>
+            <Input variant={"flat"} label="Image" placeholder="Image URL" defaultValue={productData?.imageUrl} labelPlacement="outside"/>
                 <Image
                 alt="Card background"
                 className="object-cover rounded-xl mt-2.5"
@@ -36,19 +48,19 @@ export default function ProductCard(props: ProductCardProps){
                 />
             </Tab>
             <Tab title="Properties" className="w-full">
-                <Input variant={"flat"} label="Title" placeholder="Example title" defaultValue={props.title} labelPlacement="outside"/>
+                <Input variant={"flat"} label="Title" placeholder="Example title" defaultValue={productData?.name} labelPlacement="outside"/>
                 <Textarea
                     label="Description"
                     labelPlacement="outside"
                     placeholder="Enter your description"
-                    defaultValue={props.description}
+                    defaultValue={productData?.description}
                     className="black w-full mt-2.5"
                 />
                 <Input
                 type="number"
                 label="Price"
                 placeholder="0.00"
-                defaultValue={props.price.toString()}
+                defaultValue={productData?.price.toString()}
                 labelPlacement="outside"
                 className="pt-4"
                 startContent={
@@ -59,7 +71,7 @@ export default function ProductCard(props: ProductCardProps){
                 <Select 
                 label="Category" 
                 className="max-w-xs mt-2.5" 
-                defaultSelectedKeys={props.category}
+                defaultSelectedKeys={"Appetizer"}
                 >
                     {options.map((option) => (
                     <SelectItem key={option} value={option}>

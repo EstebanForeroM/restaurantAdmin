@@ -1,17 +1,28 @@
 import ProductCard from "./ProductCard";
 import CreateCard from "./CreateCard";
+import { getProductsIds } from "../../api/productAPI";
+import { useQuery } from "react-query";
 
 export default function Product(){
+
+    const { data:products, isLoading } = useQuery({
+        queryFn: () => getProductsIds(),
+        queryKey: ['dishes'],
+    }); 
+    
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (!products) {
+        return <div>Products not found</div>;
+    }
+
 
     return (
         <section className="flex flex-wrap justify-around">
             <CreateCard/>
-            <ProductCard imgURL="https://th.bing.com/th/id/OIG2.w.OiTJYkWOLIIjhKBvs8?pid=ImgGn" title="Rice" description="A lot of rice" price={99} category={"Appetizers"}/>
-            <ProductCard imgURL="https://th.bing.com/th/id/OIG2.w.OiTJYkWOLIIjhKBvs8?pid=ImgGn" title="Rice" description="A lot of rice" price={99} category={"Appetizers"}/>
-            <ProductCard imgURL="https://th.bing.com/th/id/OIG2.w.OiTJYkWOLIIjhKBvs8?pid=ImgGn" title="Rice" description="A lot of rice" price={99} category={"Appetizers"}/>
-            <ProductCard imgURL="https://th.bing.com/th/id/OIG2.w.OiTJYkWOLIIjhKBvs8?pid=ImgGn" title="Rice" description="A lot of rice" price={99} category={"Desserts"}/>
-            <ProductCard imgURL="https://th.bing.com/th/id/OIG2.w.OiTJYkWOLIIjhKBvs8?pid=ImgGn" title="Rice" description="A lot of rice" price={99} category={"Side Dishes"}/>
-            <ProductCard imgURL="https://th.bing.com/th/id/OIG2.w.OiTJYkWOLIIjhKBvs8?pid=ImgGn" title="Rice" description="A lot of rice" price={99} category={"Main Courses"}/>
+            {products.map((id) => <ProductCard key={id} productId={id} />)}
         </section>
     );
 }
