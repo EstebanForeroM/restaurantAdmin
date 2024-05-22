@@ -1,5 +1,5 @@
 
-const baseUrl = "https://formally-enhanced-mastodon.ngrok-free.app";
+const baseUrl = "restfullapi-production-4d58.up.railway.app";
 
 interface Product {
     id: string;
@@ -10,18 +10,18 @@ interface Product {
 }
 
 export async function getProductsIds() : Promise<string[]> {
-  let response = await fetch(baseUrl + "/api/v1/dishes/allid", {
+  const response = await fetch(baseUrl + "/api/dish", {
     method: "GET",
     headers: {
       "ngrok-skip-browser-warning": "any_value",
     },
   });
-  let data = await response.json();
+  const data = await response.json();
   return data;
 }
 
 export async function getProduct(id: string): Promise<Product> {
-  let data = await fetch(baseUrl + "/api/v1/dishes/" + id, {
+  const data = await fetch(baseUrl + "/api/dish/" + id, {
     method: "GET",
     headers: {
       "ngrok-skip-browser-warning": "any_value",

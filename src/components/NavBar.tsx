@@ -1,6 +1,5 @@
 import React from "react";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem} from "@nextui-org/navbar";
-import {Button} from "@nextui-org/button";
 import { UserButton } from "@clerk/clerk-react";
 import {Link} from "@nextui-org/link";
 import {ActiveWindow} from "../App";
