@@ -3,12 +3,10 @@ import { Card, CardHeader, CardBody } from "@nextui-org/card";
 import { Image } from "@nextui-org/image";
 import { Tabs, Tab } from "@nextui-org/tabs";
 import { Input, Textarea } from "@nextui-org/input";
-import {Select, SelectSection, SelectItem} from "@nextui-org/select";
+import {Select,  SelectItem} from "@nextui-org/select";
 import { getProduct } from "../../api/productAPI";
 import { useQuery } from "react-query";
 
-
-type Categories = "Appetizers" | "Main Courses" | "Side Dishes" | "Desserts" | "Beverages";
 
 const options: string[] = [
     "Appetizers", "Main Courses", "Side Dishes", "Desserts", "Beverages"

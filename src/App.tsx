@@ -12,7 +12,7 @@ export enum ActiveWindow {
 }
 
 function App() {
-  const [activeWindow,setActiveWindow] = useState(ActiveWindow.Clients);
+  const [activeWindow,setActiveWindow] = useState(ActiveWindow.Orders);
 
   return (
     <main>

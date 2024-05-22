@@ -1,4 +1,3 @@
-import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, getKeyValue} from "@nextui-org/table";
 import { getOrders } from "../../api/UserRelatedAPI";
 import { useQuery } from "react-query";
 import { useAuth } from "@clerk/clerk-react";
@@ -7,7 +6,6 @@ import {Input} from "@nextui-org/react";
 import OrderProducts from "./OrderProducts";
 import { useState } from "react";
 import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/react";
-import React from "react";
 import {CircularProgress} from "@nextui-org/react";
 
 type Category = "All" | "Pending" | "Delivered" | "In delivery";

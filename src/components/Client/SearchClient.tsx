@@ -1,6 +1,4 @@
 import { Input } from "@nextui-org/input";
-import ProductCard from "../Product/ProductCard";
-
 
 export default function SearchClient() {
     return(

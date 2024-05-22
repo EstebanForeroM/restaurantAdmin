@@ -1,7 +1,6 @@
-import { useAuth } from "@clerk/clerk-react";
 
 const productionUrl = 'https://backenduserapiv2-production.up.railway.app';
-const developmentUrl = 'https://tolerant-vital-tetra.ngrok-free.app';
+// const developmentUrl = 'https://tolerant-vital-tetra.ngrok-free.app';
  
 const baseUrl = productionUrl;
 
